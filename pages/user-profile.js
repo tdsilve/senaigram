@@ -5,29 +5,19 @@ import axios from "axios";
 import Post from "../src/components/Post";
 import Image from "next/image";
 
-export default function UserProfile({photos}) {
-  // const router = useRouter();
-  // const userEmail = router.query.userEmail;
+export async function getStaticProps() {
+  const url = `https://senaigram.herokuapp.com/users/florinda`;
+  const res = await fetch(url)
+  const data = await res.json();
+  return {
+    props: {
+      data: data
+    }, 
+  }
+}
 
-  // const [data, setData] = useState();
-  // const [photos, setPhotos] = useState([]);
-  // const url = `https://senaigram.herokuapp.com/users/${userEmail}`;
-  // console.log(url);
-  // console.log(userEmail);
-
-  // useEffect(function () {
-  //   axios
-  //     .get(url)
-  //     .then((res) => {
-  //       setData(res.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log("User Profile Error:", error);
-  //     });
-  // }, []);
-
-  console.log("Data1:", photos);
-
+export default function UserProfile({data}) {
+  console.log(data)
   return (
     <div>
       <Header />
@@ -47,39 +37,20 @@ export default function UserProfile({photos}) {
         </div>
       </div>
       <main className="m-auto md:max-w-3xl xl:max-w-6xl max-auto">
-        {noData(photos) ? (
-          <h1>Loading...</h1>
-        ) : (
-          photos?.map((post) => {
-            <div key={post.id}>
-              1
+        {
+          data?.photos.map((post) => { 
+           return ( <div key={post.id}>
               <Post
                 imgUrl={post.url}
                 description={post.text}
                 userEmail={'florinda'}
               />
-            </div>;
-          })
-        )}
+            </div>
+          )})
+        }
       </main>
     </div>
   );
 }
 
-function noData(data) {
-  return data == undefined || !data.length;
-}
 
-export async function getServerSideProps() {
-  // const router = Router;
-  const userEmail = 'florinda';
-  const url = `https://senaigram.herokuapp.com/users/${userEmail}`;
-  const res = await fetch(url)
-  const data = await res.json();
-  const photos = data.photos;
-  return {
-    props: {
-      photos: data
-    }, // will be passed to the page component as props
-  }
-}
