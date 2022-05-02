@@ -12,7 +12,7 @@ export default function Home() {
         <title>Senaigram</title>
       </Head>
       <Header />
-      <Feed url={`https://senaigram.herokuapp.com/photos`} /> :
+      <Feed /> 
     </div>
   );
 }

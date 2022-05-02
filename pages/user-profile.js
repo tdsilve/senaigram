@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Router, useRouter } from "next/router";
 import Header from "../src/components/Header";
-import axios from "axios";
-import Post from "../src/components/Post";
 import Image from "next/image";
 
-export async function getStaticProps() {
-  const url = `https://senaigram.herokuapp.com/users/florinda`;
+export async function getServerSideProps({query}) {
+  const url = `https://senaigram.herokuapp.com/users/${query.userEmail}`;
   const res = await fetch(url)
   const data = await res.json();
   return {
@@ -17,11 +14,10 @@ export async function getStaticProps() {
 }
 
 export default function UserProfile({data}) {
-  console.log(data)
   return (
     <div>
       <Header />
-      <div className="flex items-center h-36 justify-center p-3 shadow-sm border-b bg-white mb-2">
+      <div className="flex items-center justify-center p-3 mb-2 bg-white border-b shadow-sm h-36">
         <Image
           src="/pexel.jpeg"
           width={100}
@@ -37,17 +33,17 @@ export default function UserProfile({data}) {
         </div>
       </div>
       <main className="m-auto md:max-w-3xl xl:max-w-6xl max-auto">
+        <ul className="flex flex-wrap justify-center">
         {
           data?.photos.map((post) => { 
-           return ( <div key={post.id}>
-              <Post
-                imgUrl={post.url}
-                description={post.text}
-                userEmail={'florinda'}
-              />
-            </div>
+           return ( 
+           <li key={post.id} className='m-2'>
+             <Image src={post.url} width={400} height={400} alt={post.text}/>
+            </li>
           )})
+           
         }
+        </ul>
       </main>
     </div>
   );
