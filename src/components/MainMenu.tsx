@@ -13,28 +13,31 @@ import { IconButtonItem } from "./IconButtonItem";
 
 export const MainMenu = () => {
   return (
-      <div className="flex justify-center lg:flex-col">
-        <IconButtonItem defaultIcon={<CameraEnhanceIcon fontSize="large"/>} />
-        <IconButtonItem
-          defaultIcon={<HomeOutlinedIcon fontSize="large"/>}
-          activeIcon={<HomeIcon fontSize="large"/>}
-        />
-        <IconButtonItem
-          defaultIcon={<SearchOutlinedIcon fontSize="large"/>}
-          activeIcon={<SearchIcon fontSize="large"/>}
-        />
-        <IconButtonItem
-          defaultIcon={<ChatOutlinedIcon fontSize="large"/>}
-          activeIcon={<ChatIcon fontSize="large"/>}
-        />
-        <IconButtonItem
-          defaultIcon={<NotificationsNoneOutlinedIcon fontSize="large"/>}
-          activeIcon={<NotificationsIcon fontSize="large"/>}
-        />
-        <IconButtonItem
-          defaultIcon={<PostAddOutlinedIcon fontSize="large"/>}
-          activeIcon={<PostAddIcon fontSize="large"/>}
-        />
-      </div>
+    <div
+      className="flex justify-center lg:flex-col p-2"
+      style={{ boxShadow: "0px 0px 7px .5px #bbb" }}
+    >
+      <IconButtonItem defaultIcon={<CameraEnhanceIcon fontSize="large" />} />
+      <IconButtonItem
+        defaultIcon={<HomeOutlinedIcon fontSize="large" />}
+        activeIcon={<HomeIcon fontSize="large" />}
+      />
+      <IconButtonItem
+        defaultIcon={<SearchOutlinedIcon fontSize="large" />}
+        activeIcon={<SearchIcon fontSize="large" />}
+      />
+      <IconButtonItem
+        defaultIcon={<ChatOutlinedIcon fontSize="large" />}
+        activeIcon={<ChatIcon fontSize="large" />}
+      />
+      <IconButtonItem
+        defaultIcon={<NotificationsNoneOutlinedIcon fontSize="large" />}
+        activeIcon={<NotificationsIcon fontSize="large" />}
+      />
+      <IconButtonItem
+        defaultIcon={<PostAddOutlinedIcon fontSize="large" />}
+        activeIcon={<PostAddIcon fontSize="large" />}
+      />
+    </div>
   );
 };

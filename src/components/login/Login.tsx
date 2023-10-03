@@ -17,7 +17,7 @@ export const Login = () => {
             src="/assets/login-page-animation.json"
           ></Player>
         </div>
-        <div className="w-full flex gap-y-2 ">
+        <div className="w-full flex flex-col gap-y-2 ">
           <SenaigramLogo width={50} height={40}/>
             <h1 className="text-3xl font-semibold">Welcome</h1>
             <p className="text-gray-500">Please enter your details.</p>
