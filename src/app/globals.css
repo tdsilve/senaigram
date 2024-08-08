@@ -2,3 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Clerk style */
+
+.cl-formButtonPrimary {
+    @apply bg-primary !shadow-none p-3;
+  }
+  
+  .cl-footerActionLink {
+    @apply text-primary font-bold;
+  }
+  
+  .cl-formFieldLabel {
+    @apply font-normal opacity-70;
+  }
