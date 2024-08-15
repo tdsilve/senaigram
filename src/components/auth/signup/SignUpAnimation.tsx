@@ -1,8 +1,8 @@
 "use client";
-import * as animationData from "@/assets/lottie/Signin-animation.json";
+import * as animationData from "@/assets/lottie/Signup-animation.json";
 import Lottie from "react-lottie";
 
-type SignInAnimationProps = {
+type SignUpAnimationProps = {
   width?: number;
   height?: number;
 };
@@ -16,9 +16,9 @@ const defaultOptions = {
   },
 };
 
-export const SignInAnimation = ({
+export const SignUpAnimation = ({
   width = 400,
   height = 400,
-}: SignInAnimationProps) => {
+}: SignUpAnimationProps) => {
   return <Lottie options={defaultOptions} height={width} width={height} />;
 };

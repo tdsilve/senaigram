@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "precommit": "yarn lint-staged",
+    "precommit": "next lint --fix",
     "prettier:all": "yarn prettier . --write"
   },
   "lint-staged": {
@@ -18,6 +18,9 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.2.14",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^5.16.6",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18"

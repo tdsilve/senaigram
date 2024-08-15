@@ -5,13 +5,17 @@
 /* Clerk style */
 
 .cl-formButtonPrimary {
-    @apply bg-primary !shadow-none p-3;
-  }
-  
-  .cl-footerActionLink {
-    @apply text-primary font-bold;
-  }
-  
-  .cl-formFieldLabel {
-    @apply font-normal opacity-70;
-  }
+  @apply bg-primary !shadow-none p-3;
+}
+
+.cl-footerActionLink {
+  @apply text-primary font-bold;
+}
+
+.cl-formFieldLabel {
+  @apply font-normal opacity-70;
+}
+
+.cl-logoImage {
+  @apply h-[70px] mb-2;
+}

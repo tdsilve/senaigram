@@ -1,10 +1,10 @@
-import { SignIn, SignUp } from "@clerk/nextjs";
+import { SignUp } from "@clerk/nextjs";
 import { LoadingAuth } from "../../LoadingAuth";
 
-export const SignInForm = () => {
+export const SignUpForm = () => {
   return (
     <LoadingAuth>
-      <SignIn />
+      <SignUp />
     </LoadingAuth>
   );
 };

@@ -1,5 +1,5 @@
-import { SignInAnimation } from "@/components/auth/signin/SigninAnimation";
 import { CenteredGridContainerWithGradient } from "@/components/container/CenteredGridContainerWithGradient";
+import { SignUpAnimation } from "@/components/auth/signup/SignUpAnimation";
 
 export default function Layout({
   children,
@@ -9,7 +9,7 @@ export default function Layout({
   return (
     <CenteredGridContainerWithGradient>
       <div className="w-full h-full hidden md:flex items-center">
-        <SignInAnimation width={500} />
+        <SignUpAnimation />
       </div>
       <div className="w-full h-full flex items-center justify-center">
         {children}
