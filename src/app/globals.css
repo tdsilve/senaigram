@@ -19,3 +19,8 @@
 .cl-logoImage {
   @apply h-[70px] mb-2;
 }
+
+/* Header */
+.header-shadow {
+  box-shadow: 0px 0px 5px  rgba(0, 0,0, .3);
+}
