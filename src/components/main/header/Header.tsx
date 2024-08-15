@@ -77,7 +77,6 @@ const HeaderLargeScreen = () => {
     <div className="h-screen flex flex-col gap-4 items-center header-shadow w-[50px] pt-4">
       <Home />
       {items?.map(({ icon, label, route, activeIcon, id }) => {
-        
         const content = route && isActive(route) ? activeIcon : icon;
         return (
           <Tooltip title={label} arrow placement="right" key={id}>
@@ -101,7 +100,6 @@ const HeaderSmallerScreen = () => {
   return (
     <div className="flex gap-4 items-center justify-evenly fixed bottom-0 z-40 w-full p-3 header-shadow h-[55px]">
       {headerItems?.map(({ icon, label, route, activeIcon, id }) => {
-     
         const content = route && isActive(route) ? activeIcon : icon;
         return (
           <Tooltip title={label} arrow placement="top" key={id}>
