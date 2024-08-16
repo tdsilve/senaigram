@@ -1,4 +1,3 @@
-
 import { useIsPathnameActive } from "@/hooks/useIsPathnameActive";
 import { UserLoggedButton } from "@/components/auth/user-logged-btn/UserLoggedButton";
 import { HeaderProps } from "./Header";
@@ -14,7 +13,13 @@ export const HeaderLargeScreen = ({ routes }: HeaderProps) => {
       {routes?.map(({ icon, label, route, activeIcon, id }) => {
         const content = route && isActive(route) ? activeIcon : icon;
         return (
-          <HeaderItem key={id} label = { label } route = { route }  content = { content } placement="right"/>
+          <HeaderItem
+            key={id}
+            label={label}
+            route={route}
+            content={content}
+            placement="right"
+          />
         );
       })}
       <UserLoggedButton />
