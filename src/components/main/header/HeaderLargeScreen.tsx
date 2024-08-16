@@ -1,10 +1,10 @@
-import { Tooltip } from "@mui/material";
+
 import { useIsPathnameActive } from "@/hooks/useIsPathnameActive";
-import Link from "next/link";
 import { UserLoggedButton } from "@/components/auth/user-logged-btn/UserLoggedButton";
 import { HeaderProps } from "./Header";
 import { Home } from "@/components/main/header/Home";
 import { Menu } from "@/components/main/header/Menu";
+import { HeaderItem } from "./HeaderItem";
 
 export const HeaderLargeScreen = ({ routes }: HeaderProps) => {
   const { isActive } = useIsPathnameActive();
@@ -14,11 +14,7 @@ export const HeaderLargeScreen = ({ routes }: HeaderProps) => {
       {routes?.map(({ icon, label, route, activeIcon, id }) => {
         const content = route && isActive(route) ? activeIcon : icon;
         return (
-          <Tooltip title={label} arrow placement="right" key={id}>
-            <Link href={route ?? "/"} className="text-2xl cursor-pointer">
-              {content}
-            </Link>
-          </Tooltip>
+          <HeaderItem key={id} label = { label } route = { route }  content = { content } placement="right"/>
         );
       })}
       <UserLoggedButton />
