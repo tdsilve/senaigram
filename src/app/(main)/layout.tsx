@@ -8,9 +8,7 @@ export default function Layout({
   return (
     <div className="lg:flex block">
       <Header />
-      <div className="mx-auto w-[700px] border">
-      {children}
-      </div>
+      <div className="mx-auto w-[700px] border">{children}</div>
     </div>
   );
 }

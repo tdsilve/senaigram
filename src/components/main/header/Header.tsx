@@ -4,7 +4,6 @@ import { routes } from "@/constants/routes";
 import { HeaderSmallScreen } from "./HeaderSmallScreen";
 import { HeaderLargeScreen } from "./HeaderLargeScreen";
 
-
 export type HeaderProps = {
   routes: {
     id: number;
@@ -14,11 +13,9 @@ export type HeaderProps = {
     route?: string;
     showSmallScreen: boolean;
   }[];
-}
-
+};
 
 export const Header = () => {
-
   return (
     <>
       <div className="lg:block hidden ">
