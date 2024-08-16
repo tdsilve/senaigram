@@ -1,4 +1,4 @@
-import { SignInAnimation } from "@/components/auth/signin/SigninAnimation";
+import { SignInAnimation } from "@/components/auth/signin/SignInAnimation";
 import { CenteredGridContainerWithGradient } from "@/components/container/CenteredGridContainerWithGradient";
 
 export default function Layout({

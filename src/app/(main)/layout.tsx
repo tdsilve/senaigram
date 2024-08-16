@@ -6,9 +6,11 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <div className="lg:flex block">
       <Header />
+      <div className="mx-auto w-[700px] border">
       {children}
+      </div>
     </div>
   );
 }
