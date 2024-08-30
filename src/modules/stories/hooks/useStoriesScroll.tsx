@@ -1,4 +1,4 @@
-import { Users } from '@/modules/stories/aux/users'
+import { Users } from "@/modules/stories/aux/users";
 import React from "react";
 
 export const useStoriesScroll = (users: Users[]) => {
@@ -36,19 +36,25 @@ export const useStoriesScroll = (users: Users[]) => {
   }, [users]);
 
   const onScroll = (val: number) => {
-    const {current } = containerRef;
+    const { current } = containerRef;
     if (!current) return;
     current.scrollBy({
       left: val,
-      behavior: "smooth"
-    })
-  }
+      behavior: "smooth",
+    });
+  };
   const onScrollLeft = () => {
     onScroll(-SCROLL_DISTANCE);
-  }
+  };
   const onScrollRight = () => {
     onScroll(SCROLL_DISTANCE);
-  }
+  };
 
-  return { containerRef, showScrollLeft, showScrollRight, onScrollLeft, onScrollRight };
+  return {
+    containerRef,
+    showScrollLeft,
+    showScrollRight,
+    onScrollLeft,
+    onScrollRight,
+  };
 };
