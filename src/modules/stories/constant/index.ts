@@ -1,1 +1,1 @@
-export const STORY_TIMING = 5000
+export const STORY_TIMING = 5000;

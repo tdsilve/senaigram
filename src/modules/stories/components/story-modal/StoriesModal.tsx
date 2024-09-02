@@ -19,12 +19,15 @@ export const StoriesModal = () => {
   return (
     <Dialog open={modal.status} fullWidth>
       <div className="relative">
-      <StoriesHover>
-
-<div className="absolute top-0 w-full">
-        <StoryContent handleClick={handleModal} userId={userId} userName={userName} />
-        </div>
-      </StoriesHover>
+        <StoriesHover>
+          <div className="absolute top-0 w-full">
+            <StoryContent
+              handleClick={handleModal}
+              userId={userId}
+              userName={userName}
+            />
+          </div>
+        </StoriesHover>
       </div>
     </Dialog>
   );

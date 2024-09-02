@@ -3,7 +3,7 @@ import { STORIES_REDUCER_ACTIONS } from "./enums";
 export type StoriesContextType = {
   modal: {
     status: boolean;
-    userId: number ;
+    userId: number;
     userName?: string;
   };
   dispatch: React.Dispatch<Payload>;
@@ -45,4 +45,4 @@ export type StoryTransitionConfig = {
   timing?: number;
   inPause?: boolean;
   setInPause?: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};
