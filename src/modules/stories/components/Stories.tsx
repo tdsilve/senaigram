@@ -2,24 +2,25 @@
 import React from "react";
 import { StoriesUserAvatarContainer } from "./story-user-avatar/StoriesUserAvatarContainer";
 import { storiesReducer } from "../reducer";
-import { getStoriesInitialState } from "../helpers/stories-initial-state";
+import { getStoriesInitialState } from "../helpers/getStoriesInitialState";
 import { StoriesContext } from "../context/StoriesContext";
 import { Payload, StoriesContextType } from "../types/type";
-import { StoriesModal } from "./StoriesModal";
+import { StoriesModal } from "./story-modal/StoriesModal";
 
 export const Stories = () => {
-
   const [state, dispatch] = React.useReducer(
     storiesReducer,
-    getStoriesInitialState()
+    getStoriesInitialState(),
   );
 
   const initialState = {
     ...state,
-    dispatch
-  }
-  return <StoriesContext.Provider value={initialState}>
-    <StoriesUserAvatarContainer />
-    <StoriesModal/>
-  </StoriesContext.Provider>;
+    dispatch,
+  };
+  return (
+    <StoriesContext.Provider value={initialState}>
+      <StoriesUserAvatarContainer />
+      <StoriesModal />
+    </StoriesContext.Provider>
+  );
 };

@@ -9,11 +9,14 @@ export const StoryBubble = ({ user }: { user: Users }) => {
   const handleClick = () => {
     toggleModal(dispatch, {
       userName: user.name,
-      userId: user.id
-    })
-  }
+      userId: user.id,
+    });
+  };
   return (
-    <div className="cursor-pointer grid items-center gap-1" onClick={handleClick}>
+    <div
+      className="cursor-pointer grid items-center gap-1"
+      onClick={handleClick}
+    >
       <StoryUserAvatar src={user?.avatar} />
       <div className="text-md overflow-hidden w-16 text-ellipsis">
         {user.name}
