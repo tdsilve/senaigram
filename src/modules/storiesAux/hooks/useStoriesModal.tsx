@@ -1,4 +1,3 @@
-
 import { useStoriesContext } from "../context/StoriesContext";
 import React from "react";
 import { getStoriesInitialState } from "../helpers/getStoriesInitialState";

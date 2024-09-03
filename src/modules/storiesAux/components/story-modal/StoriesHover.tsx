@@ -27,8 +27,7 @@ export const StoriesHover = ({ children }: StoriesHoverProps) => {
   const { currentStory } = storiesStateInitialValue;
   const { currentStoryIndex, currentStories } = storyTransitionConfig;
 
-  React.useEffect(() => {
-  }, [storyTransitionConfig.currentStoryIndex]);
+  React.useEffect(() => {}, [storyTransitionConfig.currentStoryIndex]);
 
   const configStoryTransition = {
     userId,

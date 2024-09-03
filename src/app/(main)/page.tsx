@@ -7,7 +7,7 @@ import React from "react";
 export default function Home() {
   return (
     <div className="w-full z-10">
-      <Stories/>
+      <Stories />
       {/* <Stories /> */}
       {/* <Stories/> */}
       heyhhhhhhh Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab

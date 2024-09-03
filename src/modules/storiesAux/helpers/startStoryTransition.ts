@@ -18,7 +18,8 @@ export const startStoryTransition = (config: StoryTransitionConfig) => {
 
   if (storiesRemaining) {
     const newIndex = currentStoryIndex + 1;
-    if (newIndex === currentStories.length - 1) toggleModal(dispatch as React.Dispatch<Payload>, config);
+    if (newIndex === currentStories.length - 1)
+      toggleModal(dispatch as React.Dispatch<Payload>, config);
 
     storiesDispatch?.({
       type: STORIES_MODAL_REDUCER_ACTIONS.SET_SINGLE_STORY,
@@ -27,7 +28,6 @@ export const startStoryTransition = (config: StoryTransitionConfig) => {
   }
 
   if (!storiesRemaining) {
-
     const moreUsersStories = USERS.findIndex((u) => u.authorId === userId);
 
     if (moreUsersStories !== -1) {
