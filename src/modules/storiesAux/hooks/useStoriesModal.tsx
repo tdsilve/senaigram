@@ -1,4 +1,4 @@
-import { STORIES } from "../aux/stories";
+
 import { useStoriesContext } from "../context/StoriesContext";
 import React from "react";
 import { getStoriesInitialState } from "../helpers/getStoriesInitialState";
@@ -8,15 +8,20 @@ import { Users, USERS } from "../aux/users";
 import { STORIES_MODAL_REDUCER_ACTIONS } from "../types/enums";
 import { StoryTransitionConfig } from "../types/type";
 
+function getInitialStories(userId: number) {
+  const findIndex = USERS.findIndex((u) => u.authorId === userId);
+  return USERS[findIndex].stories;
+}
+
 export const useStoriesModal = () => {
   const {
     dispatch,
     modal: { userId, userName },
   } = useStoriesContext();
-  console.log(userId);
 
   const [inPause, setInPause] = React.useState(false);
-  const initialStories = STORIES[userId]?.stories;
+  const initialStories = getInitialStories(userId);
+
   const storiesInitialValue = getCurrentStoriesInitialConfig(
     initialStories,
     userId,

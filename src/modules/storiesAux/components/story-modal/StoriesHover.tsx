@@ -1,6 +1,6 @@
 import React from "react";
 import { useStoriesModal } from "../../hooks/useStoriesModal";
-import { STORIES } from "../../aux/stories";
+
 import { STORY_TIMING } from "../../constant";
 import { Timer } from "../../class/timer";
 import { STORIES_MODAL_REDUCER_ACTIONS } from "../../types/enums";
@@ -28,7 +28,6 @@ export const StoriesHover = ({ children }: StoriesHoverProps) => {
   const { currentStoryIndex, currentStories } = storyTransitionConfig;
 
   React.useEffect(() => {
-    console.log(storyTransitionConfig.currentStoryIndex);
   }, [storyTransitionConfig.currentStoryIndex]);
 
   const configStoryTransition = {

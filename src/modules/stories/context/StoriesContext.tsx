@@ -1,9 +1,6 @@
-import React from "react";
-import { StoriesContextType } from "../types/type";
-import { getStoriesInitialState } from "../helpers/getStoriesInitialState";
-
-export const StoriesContext = React.createContext<StoriesContextType>(
-  getStoriesInitialState(),
-);
-
-export const useStoriesContext = () => React.useContext(StoriesContext);
+"use client";
+import React from 'react'
+import { StoriesContexType } from '../models/type';
+import { getInitialStoriesContextState } from '../helpers/getInitialStoriesContextState';
+export const StoriesContext = React.createContext<StoriesContexType>(getInitialStoriesContextState())
+export const useStoriesContext = () => React.useContext(StoriesContext)

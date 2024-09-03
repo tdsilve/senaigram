@@ -1,4 +1,4 @@
-import { Users } from "@/modules/stories/aux/users";
+import { Users } from "@/modules/storiesAux/aux/users";
 import React from "react";
 
 export const useStoriesScroll = (users: Users[]) => {

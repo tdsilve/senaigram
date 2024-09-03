@@ -2,8 +2,7 @@ import {
   STORIES_MODAL_REDUCER_ACTIONS,
   STORIES_REDUCER_ACTIONS,
 } from "../types/enums";
-import { Payload, PayloadConfig, StoryTransitionConfig } from "../types/type";
-import { STORIES } from "../aux/stories";
+import { Payload, StoryTransitionConfig } from "../types/type";
 import { USERS } from "../aux/users";
 import { toggleModal } from "../services/toggleModal";
 export const startStoryTransition = (config: StoryTransitionConfig) => {
@@ -19,6 +18,7 @@ export const startStoryTransition = (config: StoryTransitionConfig) => {
 
   if (storiesRemaining) {
     const newIndex = currentStoryIndex + 1;
+    if (newIndex === currentStories.length - 1) toggleModal(dispatch as React.Dispatch<Payload>, config);
 
     storiesDispatch?.({
       type: STORIES_MODAL_REDUCER_ACTIONS.SET_SINGLE_STORY,
@@ -27,11 +27,12 @@ export const startStoryTransition = (config: StoryTransitionConfig) => {
   }
 
   if (!storiesRemaining) {
-    const moreUsersStories = userId < STORIES.length - 1;
 
-    if (moreUsersStories) {
-      const newStoriesBatch = STORIES[userId + 1].stories;
-      const userName = USERS.find((user) => user.id === userId + 1)?.name;
+    const moreUsersStories = USERS.findIndex((u) => u.authorId === userId);
+
+    if (moreUsersStories !== -1) {
+      const newStoriesBatch = USERS[userId + 1].stories;
+      const userName = USERS.find((user) => user.authorId === userId)?.name;
 
       storiesDispatch?.({
         type: STORIES_MODAL_REDUCER_ACTIONS.SET_NEW_STORIES_BATCH,
@@ -47,7 +48,7 @@ export const startStoryTransition = (config: StoryTransitionConfig) => {
       });
     }
 
-    if (!moreUsersStories)
+    if (!moreUsersStories || moreUsersStories == -1)
       toggleModal(dispatch as React.Dispatch<Payload>, config);
   }
 };

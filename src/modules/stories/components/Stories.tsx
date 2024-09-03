@@ -1,26 +1,23 @@
 "use client";
-import React from "react";
-import { StoriesUserAvatarContainer } from "./story-user-avatar/StoriesUserAvatarContainer";
-import { storiesReducer } from "../reducer";
-import { getStoriesInitialState } from "../helpers/getStoriesInitialState";
-import { StoriesContext } from "../context/StoriesContext";
-import { Payload, StoriesContextType } from "../types/type";
-import { StoriesModal } from "./story-modal/StoriesModal";
+import React from 'react';
+import { USERS } from "../dummyData/data"
+import { StoriesAvatarScroller } from './StoriesAvatarScroller';
+import { StoriesModal } from './StoriesModal';
+import { StoriesContext } from '../context/StoriesContext';
+import { storiesReducer } from '../reducers/storiesReducer';
+import { getInitialStoriesContextState } from '../helpers/getInitialStoriesContextState';
+
 
 export const Stories = () => {
-  const [state, dispatch] = React.useReducer(
-    storiesReducer,
-    getStoriesInitialState(),
-  );
+    const [state, dispatch] = React.useReducer(storiesReducer, getInitialStoriesContextState())
 
-  const initialState = {
-    ...state,
-    dispatch,
-  };
-  return (
-    <StoriesContext.Provider value={initialState}>
-      <StoriesUserAvatarContainer />
-      <StoriesModal />
-    </StoriesContext.Provider>
-  );
-};
+    return (
+        <StoriesContext.Provider value={{
+            ...state,
+            dispatch
+        }}>
+            <StoriesAvatarScroller data={USERS} />
+            <StoriesModal />
+        </StoriesContext.Provider>
+    )
+}
