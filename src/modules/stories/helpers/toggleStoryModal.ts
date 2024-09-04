@@ -1,8 +1,8 @@
 import { STORIES_ACTIONS } from "../models/enum";
-import { Payload, PayloadConfig } from "../models/type";
+import { StoriesAction, StoriesActionPayload } from "../models/type";
 export const toggleStoryModal = (
-  dispatch: React.Dispatch<Payload>,
-  config: PayloadConfig,
+  dispatch: React.Dispatch<StoriesAction>,
+  payload: StoriesActionPayload,
 ) => {
-  dispatch({ type: STORIES_ACTIONS.TOGGLE_MODAL, config });
+  dispatch({ type: STORIES_ACTIONS.TOGGLE_MODAL, payload });
 };

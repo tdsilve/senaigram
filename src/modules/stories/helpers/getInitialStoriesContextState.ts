@@ -1,6 +1,6 @@
-import { StoriesContexType } from "../models/type";
+import { StoriesContextState } from "../models/type";
 
-export const getInitialStoriesContextState = (): StoriesContexType => {
+export const getInitialStoriesContextState = (): StoriesContextState => {
   return {
     modal: {
       status: false,

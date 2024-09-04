@@ -2,7 +2,7 @@
 import React from "react";
 import { USERS } from "../dummyData/data";
 import { StoriesAvatarScroller } from "./StoriesAvatarScroller";
-import { StoriesModal } from "./StoriesModal";
+import { StoriesModal } from "./modal/StoriesModal";
 import { StoriesContext } from "../context/StoriesContext";
 import { storiesReducer } from "../reducers/storiesReducer";
 import { getInitialStoriesContextState } from "../helpers/getInitialStoriesContextState";

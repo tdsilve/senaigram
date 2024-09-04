@@ -1,18 +1,17 @@
 import { STORIES_ACTIONS } from "../models/enum";
-import { Payload, StoriesContexType } from "../models/type";
-import { Reducer } from "react";
+import { StoriesAction, StoriesContextState } from "../models/type";
 
-export const storiesReducer = (state: StoriesContexType, action: Payload) => {
-  const { type, config } = action;
+export const storiesReducer = (state: StoriesContextState, action: StoriesAction) => {
+  const { type, payload } = action;
   switch (type) {
     case STORIES_ACTIONS.TOGGLE_MODAL:
       return {
         ...state,
         modal: {
           status: !state.modal.status,
-          userId: config.userId,
-          userName: config.userName,
-          avatar: config?.avatar,
+          userId: payload.userId,
+          userName: payload.userName,
+          avatar: payload?.avatar,
         },
       };
     case STORIES_ACTIONS.SET_MODAL:
@@ -20,9 +19,9 @@ export const storiesReducer = (state: StoriesContexType, action: Payload) => {
         ...state,
         modal: {
           ...state.modal,
-          userId: config.userId,
-          userName: config.userName,
-          avatar: config?.avatar,
+          userId: payload.userId,
+          userName: payload.userName,
+          avatar: payload?.avatar,
         },
       };
     default:

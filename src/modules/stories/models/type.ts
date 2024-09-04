@@ -1,23 +1,25 @@
-import { STORIES_ACTIONS } from "./enum";
 
-export type StoriesContexType = {
+export type StoriesContextState = {
   modal: {
     status: boolean;
-    userId: number;
-    userName: string;
-    avatar?: string;
-  };
-  dispatch: React.Dispatch<Payload>;
+  } & StoriesActionPayload;
+  dispatch: React.Dispatch<StoriesAction>;
 };
 
-export type PayloadConfig = {
-  content?: React.ReactNode;
+export type StoriesActionPayload = {
   userId: number;
   userName: string;
   avatar?: string;
 };
 
-export type Payload = {
+export type StoriesAction = {
   type: string;
-  config: PayloadConfig;
+  payload: StoriesActionPayload;
 };
+
+
+
+
+
+
+
