@@ -1,4 +1,3 @@
-
 export type StoriesContextState = {
   modal: {
     status: boolean;
@@ -16,10 +15,3 @@ export type StoriesAction = {
   type: string;
   payload: StoriesActionPayload;
 };
-
-
-
-
-
-
-

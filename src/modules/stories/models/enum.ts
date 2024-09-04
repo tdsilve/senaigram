@@ -4,5 +4,5 @@ export enum STORIES_ACTIONS {
 }
 
 export enum STORIES_MODAL_ACTIONS {
-  SET_STORIES = "set_stories"
+  SET_STORIES = "set_stories",
 }

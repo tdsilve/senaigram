@@ -5,12 +5,12 @@ export const StoryAvatar = ({
   avatar,
   userName,
   className,
-  userNameWidth
+  userNameWidth,
 }: {
   avatar?: string;
   userName: string;
-  className ?: string;
-  userNameWidth ?: string
+  className?: string;
+  userNameWidth?: string;
 }) => {
   return (
     <div className={cx(" grid items-center gap-1", className)}>
@@ -21,7 +21,12 @@ export const StoryAvatar = ({
       </div>
 
       {userName && (
-        <div className={cx("text-md overflow-hidden text-ellipsis", userNameWidth ? userNameWidth : "w-16")}>
+        <div
+          className={cx(
+            "text-md overflow-hidden text-ellipsis",
+            userNameWidth ? userNameWidth : "w-16",
+          )}
+        >
           {userName}
         </div>
       )}

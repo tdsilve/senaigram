@@ -1,7 +1,10 @@
 import { STORIES_ACTIONS } from "../models/enum";
 import { StoriesAction, StoriesContextState } from "../models/type";
 
-export const storiesReducer = (state: StoriesContextState, action: StoriesAction) => {
+export const storiesReducer = (
+  state: StoriesContextState,
+  action: StoriesAction,
+) => {
   const { type, payload } = action;
   switch (type) {
     case STORIES_ACTIONS.TOGGLE_MODAL:
