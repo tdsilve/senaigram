@@ -1,3 +1,7 @@
+export type Story = {
+  id: number;
+  content: string;
+}
 export type StoriesContextState = {
   modal: {
     status: boolean;

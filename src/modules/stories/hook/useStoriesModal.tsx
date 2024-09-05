@@ -1,20 +1,27 @@
-import React from "react";
-import { useStoriesContext } from "../context/StoriesContext";
-import { USERS } from "../dummyData/data";
-import { getInitialModalStories } from "../helpers/getInitialModalStories";
+import React from 'react';
+import { useImmer } from "use-immer";
+import { Story } from '../models/type';
+import { Users } from '../dummyData/data';
+import { getCurrentModalStories } from '../helpers/getCurrentModalStories';
 
-export const useStoriesModal = () => {
-  const {
-    modal: { userId, userName },
-    dispatch,
-  } = useStoriesContext();
-  const [inPause, setInPause] = React.useState(false);
-  const storiesIndex = USERS.findIndex((user) => user.authorId === userId);
-  const initialStories = getInitialModalStories(userId);
+type StoriesModal = {
+    stories: Story[],
+    currentIndex: number;
+    content: string;
+    users: Users[]
+}
 
-  console.log(initialStories);
-
-  return {
-    initialStories,
-  };
-};
+export const useStoriesModal = (data: Users[], userId: number) => {
+    const currentStories = getCurrentModalStories(data, userId);
+    const content = currentStories[0].content;
+    const [stories, setStories] = useImmer({
+        stories: currentStories,
+        currentIndex: 0,
+        content,
+        users: data
+    })
+console.log("hey useStoriesModal", currentStories)
+    return {
+        content
+    }
+}
