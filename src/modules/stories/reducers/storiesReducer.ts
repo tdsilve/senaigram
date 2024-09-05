@@ -9,7 +9,6 @@ export const storiesReducer = (
 
   switch (type) {
     case STORIES_ACTIONS.TOGGLE_MODAL:
-
       return {
         ...state,
         modal: {

@@ -35,11 +35,10 @@ export type StoriesModalItems = {
   currentIndex: number;
   content: StoryContent;
   users: Users[];
-}
+};
 
 export type StoriesModalContextType = {
   stories: StoriesModalItems;
   setStories: (val: (draft: StoriesModalItems) => void) => void;
   setCurrentContentStory: (val: StoriesActionPayload) => void;
 };
-

@@ -15,7 +15,8 @@ export const Stories = () => {
     storiesReducer,
     getInitialStoriesContextState(),
   );
-  const { stories, setStories, setCurrentContentStory } = useStoriesModal(USERS)
+  const { stories, setStories, setCurrentContentStory } =
+    useStoriesModal(USERS);
   return (
     <StoriesContext.Provider
       value={{
@@ -23,7 +24,9 @@ export const Stories = () => {
         dispatch,
       }}
     >
-      <StoriesModalContext.Provider value={{ stories, setStories, setCurrentContentStory }}>
+      <StoriesModalContext.Provider
+        value={{ stories, setStories, setCurrentContentStory }}
+      >
         <StoriesAvatarScroller data={USERS} />
         <StoriesModal data={USERS} />
       </StoriesModalContext.Provider>

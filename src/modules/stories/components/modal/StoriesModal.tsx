@@ -9,12 +9,11 @@ import { Users, USERS } from "../../dummyData/data";
 import { useStoriesModal } from "../../hook/useStoriesModal";
 import { useStoriesModalContext } from "../../context/StoriesModalContext";
 
-export const StoriesModal = ({data}:{data: Users[]}) => {
+export const StoriesModal = ({ data }: { data: Users[] }) => {
   const { dispatch, modal } = useStoriesContext();
- const {stories, setStories} = useStoriesModalContext();
+  const { stories, setStories } = useStoriesModalContext();
   const handleModal = () => {
     toggleStoryModal(dispatch, modal);
-
   };
 
   return (
@@ -34,7 +33,7 @@ export const StoriesModal = ({data}:{data: Users[]}) => {
             </button>
           </div>
           {/* stories */}
-          <div className="w-[300px] h-full" >
+          <div className="w-[300px] h-full">
             <img alt="" src={stories.content} />
           </div>
         </div>
