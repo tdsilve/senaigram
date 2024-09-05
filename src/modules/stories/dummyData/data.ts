@@ -150,8 +150,6 @@ export const USERS: Users[] = [
     name: "john.erika",
     avatar: avatar2.src,
     authorId: 10,
-    stories: [
-      { id: 0, content: elder1.src },
-    ],
+    stories: [{ id: 0, content: elder1.src }],
   },
 ];
