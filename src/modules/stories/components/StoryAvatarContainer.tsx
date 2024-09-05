@@ -16,12 +16,11 @@ export const StoryAvatarContainer = ({
   userId: number;
 }) => {
   const { dispatch, modal } = useStoriesContext();
-  const {  setCurrentContentStory } = useStoriesModalContext();
+  const { setCurrentContentStory } = useStoriesModalContext();
   const handleClick = () => {
     toggleStoryModal(dispatch, { userId, userName, avatar });
-    console.log("hey ", userId)
-    setCurrentContentStory({userId, userName, avatar});
-    
+    console.log("hey ", userId);
+    setCurrentContentStory({ userId, userName, avatar });
   };
   return (
     <div className="cursor-pointer" onClick={handleClick}>
