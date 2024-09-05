@@ -6,13 +6,16 @@ import { StoriesModal } from "./modal/StoriesModal";
 import { StoriesContext } from "../context/StoriesContext";
 import { storiesReducer } from "../reducers/storiesReducer";
 import { getInitialStoriesContextState } from "../helpers/getInitialStoriesContextState";
+import { StoriesModalContext } from "../context/StoriesModalContext";
+import { getInitialStoriesModalContextState } from "../helpers/getInitialStoriesModalContextState";
+import { useStoriesModal } from "../hook/useStoriesModal";
 
 export const Stories = () => {
   const [state, dispatch] = React.useReducer(
     storiesReducer,
     getInitialStoriesContextState(),
   );
-
+  const { stories, setStories, setCurrentContentStory } = useStoriesModal(USERS)
   return (
     <StoriesContext.Provider
       value={{
@@ -20,8 +23,10 @@ export const Stories = () => {
         dispatch,
       }}
     >
-      <StoriesAvatarScroller data={USERS} />
-      <StoriesModal />
+      <StoriesModalContext.Provider value={{ stories, setStories, setCurrentContentStory }}>
+        <StoriesAvatarScroller data={USERS} />
+        <StoriesModal data={USERS} />
+      </StoriesModalContext.Provider>
     </StoriesContext.Provider>
   );
 };

@@ -23,7 +23,7 @@ export const StoriesHover = ({ children }: StoriesHoverProps) => {
     userName,
     userId,
   } = useStoriesModal();
-  console.log(storiesStateInitialValue);
+
   const { currentStory } = storiesStateInitialValue;
   const { currentStoryIndex, currentStories } = storyTransitionConfig;
 

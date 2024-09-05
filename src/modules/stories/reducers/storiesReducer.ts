@@ -6,8 +6,10 @@ export const storiesReducer = (
   action: StoriesAction,
 ) => {
   const { type, payload } = action;
+
   switch (type) {
     case STORIES_ACTIONS.TOGGLE_MODAL:
+
       return {
         ...state,
         modal: {

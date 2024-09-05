@@ -5,17 +5,17 @@ import { toggleStoryModal } from "../../helpers/toggleStoryModal";
 import { StoryAvatar } from "../StoryAvatar";
 import { RiPlayFill } from "react-icons/ri";
 import { StoriesModalHeader } from "./StoriesModalHeader";
-import { USERS } from "../../dummyData/data";
+import { Users, USERS } from "../../dummyData/data";
 import { useStoriesModal } from "../../hook/useStoriesModal";
+import { useStoriesModalContext } from "../../context/StoriesModalContext";
 
-export const StoriesModal = () => {
+export const StoriesModal = ({data}:{data: Users[]}) => {
   const { dispatch, modal } = useStoriesContext();
-  const { content } = useStoriesModal(USERS, modal.userId);
-
+ const {stories, setStories} = useStoriesModalContext();
   const handleModal = () => {
     toggleStoryModal(dispatch, modal);
+
   };
-  console.log("hey modal", content);
 
   return (
     <Dialog open={modal.status} fullScreen>
@@ -34,8 +34,8 @@ export const StoriesModal = () => {
             </button>
           </div>
           {/* stories */}
-          <div className="w-[300px] h-full">
-            <img alt="" src={content} />
+          <div className="w-[300px] h-full" >
+            <img alt="" src={stories.content} />
           </div>
         </div>
       </div>
