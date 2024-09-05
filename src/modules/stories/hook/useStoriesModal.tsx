@@ -1,10 +1,9 @@
 import React from "react";
 import { useImmer } from "use-immer";
-import { StoriesActionPayload, Story } from "../models/type";
+import { StoriesActionPayload, } from "../models/type";
 import { Users } from "../dummyData/data";
 import { getModalStoriesAndContent } from "../helpers/getModalStoriesAndContent";
 import { useStoriesContext } from "../context/StoriesContext";
-import { toggleStoryModal } from "../helpers/toggleStoryModal";
 
 export const useStoriesModal = (data: Users[]) => {
   const { modal, dispatch } = useStoriesContext();
@@ -22,6 +21,7 @@ export const useStoriesModal = (data: Users[]) => {
 
   const setCurrentContentStory = (val: StoriesActionPayload) => {
     const { currentContent } = getModalStoriesAndContent(data, val.userId);
+    console.log("hey 2", val.userId)
     setStories((state) => {
       state.content = currentContent;
     });

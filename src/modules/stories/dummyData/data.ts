@@ -30,7 +30,7 @@ export const USERS: Users[] = [
     avatar: avatar1.src,
     authorId: 0,
     stories: [
-      { id: 0, content: story1.src },
+      { id: 0, content: avatar1.src },
       { id: 1, content: elder2.src },
       { id: 2, content: story3.src },
       { id: 3, content: story4.src },
@@ -42,7 +42,7 @@ export const USERS: Users[] = [
     avatar: avatar2.src,
     authorId: 1,
     stories: [
-      { id: 0, content: elder1.src },
+      { id: 0, content: avatar2.src },
       { id: 1, content: elder2.src },
       { id: 2, content: elder3.src },
     ],

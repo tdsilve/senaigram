@@ -16,18 +16,12 @@ export const StoryAvatarContainer = ({
   userId: number;
 }) => {
   const { dispatch, modal } = useStoriesContext();
-  const { setStories, setCurrentContentStory } = useStoriesModalContext();
+  const {  setCurrentContentStory } = useStoriesModalContext();
   const handleClick = () => {
-    const { currentStories, currentContent } = getModalStoriesAndContent(
-      USERS,
-      modal.userId,
-    );
-    // setStories((state) => {
-    //   state.content = currentContent
-    // })
-    setCurrentContentStory(modal);
-
     toggleStoryModal(dispatch, { userId, userName, avatar });
+    console.log("hey ", userId)
+    setCurrentContentStory({userId, userName, avatar});
+    
   };
   return (
     <div className="cursor-pointer" onClick={handleClick}>
