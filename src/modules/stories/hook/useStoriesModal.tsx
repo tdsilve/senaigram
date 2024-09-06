@@ -58,7 +58,6 @@ export const useStoriesModal = (data: Users[]) => {
       const currentUserIndex = USERS.findIndex(
         (u) => u.authorId === modal.userId,
       );
-      console.log("hey 2 currentUserIndex", currentUserIndex);
       if (currentUserIndex === -1) {
         toggleStoryModal(dispatch, modal);
         return;
@@ -82,7 +81,6 @@ export const useStoriesModal = (data: Users[]) => {
         state.currentStory = USERS[nextUserIndex].stories[0];
         state.currentStories = USERS[nextUserIndex].stories;
       });
-      console.log(stories);
       if (!remainUsers || currentUserIndex == -1) {
         toggleStoryModal(dispatch, modal);
         return;
