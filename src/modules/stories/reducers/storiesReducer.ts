@@ -6,7 +6,7 @@ export const storiesReducer = (
   action: StoriesAction,
 ) => {
   const { type, payload } = action;
-  console.log("hey dispatch", payload)
+  console.log("hey dispatch", payload);
   switch (type) {
     case STORIES_ACTIONS.TOGGLE_MODAL:
       // console.log("hey dispatch toggle modal", payload, state.modal.status)
@@ -20,7 +20,7 @@ export const storiesReducer = (
         },
       };
     case STORIES_ACTIONS.SET_MODAL:
-      console.log("hey dispatch set modal", payload)
+      console.log("hey dispatch set modal", payload);
       return {
         ...state,
         modal: {

@@ -29,40 +29,44 @@ export const useStoriesModal = (data: Users[]) => {
     });
   };
 
-  const startStoriesModalTransition = ({ modal, dispatch }: StoriesContextState) => {
+  const startStoriesModalTransition = ({
+    modal,
+    dispatch,
+  }: StoriesContextState) => {
     // se nao há next stories e next user -> close modal
     //se houver current stories, atualiza o content para o proximo story
-    // se não houver current stories, atualiza o user 
-    const currentStoryIndex = stories.currentStories.findIndex((s) => s.id === stories.currentStory.id);
+    // se não houver current stories, atualiza o user
+    const currentStoryIndex = stories.currentStories.findIndex(
+      (s) => s.id === stories.currentStory.id,
+    );
 
     if (currentStoryIndex === -1) {
       toggleStoryModal(dispatch, modal);
       return;
     }
 
- 
-    const storiesRemaining = currentStoryIndex < stories.currentStories.length - 1;
+    const storiesRemaining =
+      currentStoryIndex < stories.currentStories.length - 1;
     if (storiesRemaining) {
       // Move to the next story
       const nextStoryIndex = currentStoryIndex + 1;
       setStories((state) => {
         state.currentStory = stories.currentStories[nextStoryIndex];
-      })
-
+      });
     } else {
       // No more stories, find the next user
-      const currentUserIndex = USERS.findIndex((u) => u.authorId === modal.userId);
+      const currentUserIndex = USERS.findIndex(
+        (u) => u.authorId === modal.userId,
+      );
       console.log("hey 2 currentUserIndex", currentUserIndex);
       if (currentUserIndex === -1) {
         toggleStoryModal(dispatch, modal);
         return;
-
       }
       const remainUsers = currentUserIndex < USERS.length - 1;
       if (!remainUsers) {
         toggleStoryModal(dispatch, modal);
         return;
-
       }
       const nextUserIndex = currentUserIndex + 1;
 
@@ -71,27 +75,25 @@ export const useStoriesModal = (data: Users[]) => {
         payload: {
           userId: USERS[nextUserIndex].authorId,
           userName: USERS[nextUserIndex].name,
-          avatar: USERS[nextUserIndex].avatar
-        }
-      })
+          avatar: USERS[nextUserIndex].avatar,
+        },
+      });
       setStories((state) => {
         state.currentStory = USERS[nextUserIndex].stories[0];
         state.currentStories = USERS[nextUserIndex].stories;
-      })
-      console.log(stories)
+      });
+      console.log(stories);
       if (!remainUsers || currentUserIndex == -1) {
         toggleStoryModal(dispatch, modal);
         return;
       }
-
     }
-
-  }
+  };
 
   return {
     stories,
     setStories,
     setCurrentContentStory,
-    startStoriesModalTransition
+    startStoriesModalTransition,
   };
 };
