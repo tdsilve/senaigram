@@ -19,7 +19,6 @@ export const StoryAvatarContainer = ({
   const { setCurrentContentStory } = useStoriesModalContext();
   const handleClick = () => {
     toggleStoryModal(dispatch, { userId, userName, avatar });
-    console.log("hey ", userId);
     setCurrentContentStory({ userId, userName, avatar });
   };
   return (

@@ -25,15 +25,13 @@ export type StoriesAction = {
 
 export type StoriesModal = {
   stories: Story[];
-  currentIndex: number;
-  content: StoryContent;
+  currentStory: Story;
   users: Users[];
 };
 
 export type StoriesModalItems = {
   currentStories: Story[];
-  currentIndex: number;
-  content: StoryContent;
+  currentStory: Story;
   users: Users[];
 };
 
@@ -41,4 +39,5 @@ export type StoriesModalContextType = {
   stories: StoriesModalItems;
   setStories: (val: (draft: StoriesModalItems) => void) => void;
   setCurrentContentStory: (val: StoriesActionPayload) => void;
+  startStoriesModalTransition: (val: StoriesContextState) => void;
 };

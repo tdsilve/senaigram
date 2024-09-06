@@ -11,10 +11,18 @@ import { useStoriesModalContext } from "../../context/StoriesModalContext";
 
 export const StoriesModal = ({ data }: { data: Users[] }) => {
   const { dispatch, modal } = useStoriesContext();
-  const { stories, setStories } = useStoriesModalContext();
+  const { stories, setStories, startStoriesModalTransition } = useStoriesModalContext();
   const handleModal = () => {
     toggleStoryModal(dispatch, modal);
   };
+
+  React.useEffect(() => {}, [modal.status])
+
+  const handleOnLoad = () => {
+    setTimeout(() => {
+      startStoriesModalTransition({modal, dispatch});
+    }, 1000)
+  }
 
   return (
     <Dialog open={modal.status} fullScreen>
@@ -34,7 +42,7 @@ export const StoriesModal = ({ data }: { data: Users[] }) => {
           </div>
           {/* stories */}
           <div className="w-[300px] h-full">
-            <img alt="" src={stories.content} />
+            <img alt="" src={stories.currentStory?.content ?? ""} onLoad={handleOnLoad}/>
           </div>
         </div>
       </div>

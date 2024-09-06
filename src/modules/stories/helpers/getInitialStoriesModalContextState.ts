@@ -2,6 +2,7 @@ import {
   StoriesModalContextType,
   StoriesModalItems,
   StoriesActionPayload,
+  StoriesContextState
 } from "../models/type";
 
 export const getInitialStoriesModalContextState =
@@ -15,8 +16,10 @@ export const getInitialStoriesModalContextState =
             content: "",
           },
         ],
-        currentIndex: 0,
-        content: "",
+        currentStory: {
+          id: 0,
+          content: ""
+        },
         users: [
           {
             id: 0,
@@ -33,5 +36,6 @@ export const getInitialStoriesModalContextState =
         ],
       },
       setCurrentContentStory: (val: StoriesActionPayload) => {},
+      startStoriesModalTransition: (val: StoriesContextState) => {},
     };
   };

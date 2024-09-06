@@ -7,6 +7,6 @@ export const getModalStoriesAndContent = (data: Users[], userId: number) => {
 
   return {
     currentStories: initialData,
-    currentContent: initialData[0].content,
+    currentStory: initialData[0],
   };
 };
