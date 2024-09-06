@@ -3,8 +3,6 @@ import { useStoriesContext } from "../context/StoriesContext";
 import { toggleStoryModal } from "../helpers/toggleStoryModal";
 import { StoryAvatar } from "./StoryAvatar";
 import { useStoriesModalContext } from "../context/StoriesModalContext";
-import { getModalStoriesAndContent } from "../helpers/getModalStoriesAndContent";
-import { USERS } from "../dummyData/data";
 
 export const StoryAvatarContainer = ({
   avatar,
@@ -15,7 +13,7 @@ export const StoryAvatarContainer = ({
   userName: string;
   userId: number;
 }) => {
-  const { dispatch, modal } = useStoriesContext();
+  const { dispatch } = useStoriesContext();
   const { setCurrentContentStory } = useStoriesModalContext();
   const handleClick = () => {
     toggleStoryModal(dispatch, { userId, userName, avatar });

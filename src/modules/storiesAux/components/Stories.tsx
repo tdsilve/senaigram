@@ -4,7 +4,6 @@ import { StoriesUserAvatarContainer } from "./story-user-avatar/StoriesUserAvata
 import { storiesReducer } from "../reducer";
 import { getStoriesInitialState } from "../helpers/getStoriesInitialState";
 import { StoriesContext } from "../context/StoriesContext";
-import { Payload, StoriesContextType } from "../types/type";
 import { StoriesModal } from "./story-modal/StoriesModal";
 
 export const Stories = () => {

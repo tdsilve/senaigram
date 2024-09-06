@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Users } from "../dummyData/data";
 
 export type StoryContent = string;

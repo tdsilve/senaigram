@@ -1,5 +1,5 @@
 import React from "react";
-import { StoriesContextState } from "../types/type";
+import { StoriesContextType } from "../types/type";
 import { getStoriesInitialState } from "../helpers/getStoriesInitialState";
 
 export const StoriesContext = React.createContext<StoriesContextType>(

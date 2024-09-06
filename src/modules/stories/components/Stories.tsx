@@ -7,7 +7,7 @@ import { StoriesContext } from "../context/StoriesContext";
 import { storiesReducer } from "../reducers/storiesReducer";
 import { getInitialStoriesContextState } from "../helpers/getInitialStoriesContextState";
 import { StoriesModalContext } from "../context/StoriesModalContext";
-import { getInitialStoriesModalContextState } from "../helpers/getInitialStoriesModalContextState";
+
 import { useStoriesModal } from "../hook/useStoriesModal";
 
 export const Stories = () => {
@@ -38,7 +38,7 @@ export const Stories = () => {
       >
         <StoriesAvatarScroller data={USERS} />
 
-        <StoriesModal data={USERS} />
+        <StoriesModal />
       </StoriesModalContext.Provider>
     </StoriesContext.Provider>
   );

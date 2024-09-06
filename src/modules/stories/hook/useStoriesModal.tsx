@@ -1,15 +1,13 @@
-import React from "react";
 import { useImmer } from "use-immer";
 import { StoriesActionPayload, StoriesContextState } from "../models/type";
 import { USERS, Users } from "../dummyData/data";
 import { getModalStoriesAndContent } from "../helpers/getModalStoriesAndContent";
 import { useStoriesContext } from "../context/StoriesContext";
-import { toggleModal } from "@/modules/storiesAux/services/toggleModal";
 import { toggleStoryModal } from "../helpers/toggleStoryModal";
-import { STORIES_ACTIONS } from "../models/enum";
+import { setStoryModal } from "../helpers/setStoryModal";
 
 export const useStoriesModal = (data: Users[]) => {
-  const { dispatch, modal } = useStoriesContext();
+  const { modal } = useStoriesContext();
   const { currentStories, currentStory } = getModalStoriesAndContent(
     data,
     modal.userId,
@@ -69,14 +67,12 @@ export const useStoriesModal = (data: Users[]) => {
       }
       const nextUserIndex = currentUserIndex + 1;
 
-      dispatch({
-        type: STORIES_ACTIONS.SET_MODAL,
-        payload: {
-          userId: USERS[nextUserIndex].authorId,
-          userName: USERS[nextUserIndex].name,
-          avatar: USERS[nextUserIndex].avatar,
-        },
+      setStoryModal(dispatch, {
+        userId: USERS[nextUserIndex].authorId,
+        userName: USERS[nextUserIndex].name,
+        avatar: USERS[nextUserIndex].avatar,
       });
+
       setStories((state) => {
         state.currentStory = USERS[nextUserIndex].stories[0];
         state.currentStories = USERS[nextUserIndex].stories;

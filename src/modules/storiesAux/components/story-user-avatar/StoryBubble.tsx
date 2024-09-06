@@ -4,13 +4,7 @@ import { StoryUserAvatar } from "./StoryUserAvatar";
 import { useStoriesContext } from "../../context/StoriesContext";
 import { toggleModal } from "../../services/toggleModal";
 
-export const StoryBubble = ({
-  user,
-  index,
-}: {
-  user: Users;
-  index: number;
-}) => {
+export const StoryBubble = ({ user }: { user: Users }) => {
   const { dispatch } = useStoriesContext();
   const handleClick = () => {
     toggleModal(dispatch, {

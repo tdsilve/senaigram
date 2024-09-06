@@ -2,9 +2,6 @@ import React from "react";
 import { Dialog } from "@mui/material";
 import { useStoriesContext } from "../../context/StoriesContext";
 import { toggleModal } from "../../services/toggleModal";
-import { StoryUserAvatar } from "../story-user-avatar/StoryUserAvatar";
-import { USERS } from "../../aux/users";
-import { RiPauseFill, RiCloseFill } from "react-icons/ri";
 import { StoryContent } from "./StoryContent";
 import { StoriesHover } from "./StoriesHover";
 

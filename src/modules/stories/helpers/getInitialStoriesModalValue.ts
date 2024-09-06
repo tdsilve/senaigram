@@ -1,4 +1,3 @@
-import React from "react";
 import { Users } from "../dummyData/data";
 import { StoriesModal } from "../models/type";
 

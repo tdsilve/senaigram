@@ -5,32 +5,32 @@ import { toggleStoryModal } from "../../helpers/toggleStoryModal";
 import { StoryAvatar } from "../StoryAvatar";
 import { RiPlayFill } from "react-icons/ri";
 import { StoriesModalHeader } from "./StoriesModalHeader";
-import { Users, USERS } from "../../dummyData/data";
-import { useStoriesModal } from "../../hook/useStoriesModal";
+
 import { useStoriesModalContext } from "../../context/StoriesModalContext";
 
-export const StoriesModal = ({ data }: { data: Users[] }) => {
+export const StoriesModal = () => {
   const { dispatch, modal } = useStoriesContext();
-  const { stories, setStories, startStoriesModalTransition } =
-    useStoriesModalContext();
+  const { stories, startStoriesModalTransition } = useStoriesModalContext();
   const handleModal = () => {
     toggleStoryModal(dispatch, modal);
   };
 
-  React.useEffect(() => {}, [modal.status]);
-
   const handleOnLoad = () => {
-    setTimeout(() => {
-      startStoriesModalTransition({ modal, dispatch });
-    }, 1000);
+    // setTimeout(() => {
+    //   startStoriesModalTransition({ modal, dispatch });
+    // }, 1000);
   };
 
   return (
     <Dialog open={modal.status} fullScreen>
-      <div className="w-screen h-screen overflow-hidden bg-black/90">
-        <StoriesModalHeader onClick={handleModal} />
-        <div className="grid place-items-center w-full h-full">
-          <div className="flex items-center justify-between">
+      <div className="w-screen h-screen overflow-hidden bg-black/90 relative p-4">
+        <div className="absolute top-0 w-screen">
+          <StoriesModalHeader onClick={handleModal} />
+        </div>
+
+        {/* todo */}
+        <div className="w-[500px] h-full relative mx-auto rounded-2xl">
+          <div className="flex items-center justify-between relative z-30 p-4">
             <StoryAvatar
               userName={modal.userName}
               avatar={modal.avatar}
@@ -41,12 +41,14 @@ export const StoriesModal = ({ data }: { data: Users[] }) => {
               <RiPlayFill />
             </button>
           </div>
+
           {/* stories */}
-          <div className="w-[300px] h-full">
+          <div className="w-full h-full absolute top-0">
             <img
               alt=""
               src={stories.currentStory?.content ?? ""}
               onLoad={handleOnLoad}
+              className="w-full h-full object-contain"
             />
           </div>
         </div>
