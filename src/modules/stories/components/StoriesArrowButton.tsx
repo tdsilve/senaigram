@@ -3,11 +3,13 @@ import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri";
 import { cx } from "@/lib/css";
 
 export const StoriesArrowButton = ({
-  isLeft,
+  isLeft = false,
   onClick,
+  className,
 }: {
-  isLeft: boolean;
+  isLeft?: boolean;
   onClick: () => void;
+  className?: string;
 }) => {
   const icon = isLeft ? <RiArrowLeftSLine /> : <RiArrowRightSLine />;
   return (
@@ -15,6 +17,7 @@ export const StoriesArrowButton = ({
       className={cx(
         "absolute top-1/2 -translate-y-1/2 z-30 text-2xl text-gray-600 bg-white/80 rounded-full cursor-pointer",
         isLeft ? "left-0" : "right-0",
+        className,
       )}
       onClick={onClick}
     >

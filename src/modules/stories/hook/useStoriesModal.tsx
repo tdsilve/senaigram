@@ -15,7 +15,6 @@ export const useStoriesModal = (data: Users[]) => {
 
   const [stories, setStories] = useImmer({
     currentStories,
-    currentUserIndex: 0,
     currentStory,
     users: data,
   });
