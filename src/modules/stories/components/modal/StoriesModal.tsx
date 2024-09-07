@@ -5,7 +5,7 @@ import { toggleStoryModal } from "../../helpers/toggleStoryModal";
 
 import { StoriesModalHeader } from "./StoriesModalHeader";
 
-import { StoriesSwiper } from "./StoriesSwiper";
+import { Carrossel } from "../carrossel/Carrossel";
 
 export const StoriesModal = () => {
   const { dispatch, modal } = useStoriesContext();
@@ -20,7 +20,7 @@ export const StoriesModal = () => {
           <StoriesModalHeader onClick={handleModal} />
         </div>
 
-        <StoriesSwiper />
+        <Carrossel />
       </div>
     </Dialog>
   );
