@@ -22,3 +22,11 @@ export type StoriesAction = {
   type: string;
   payload: StoriesActionPayload;
 };
+
+export type TrackItem = {
+  id: number;
+  authorId: number;
+  stories: any[];
+  storyIndex: number;
+  index: number;
+};
