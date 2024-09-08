@@ -2,22 +2,24 @@ import React from "react";
 import { useStoriesContext } from "../context/StoriesContext";
 import { toggleStoryModal } from "../helpers/toggleStoryModal";
 import { StoryAvatar } from "./StoryAvatar";
-import { useStoriesModalContext } from "../context/StoriesModalContext";
+
+type StoryAvatarContainerProps = {
+  avatar: string;
+  userName: string;
+  userId: number;
+};
 
 export const StoryAvatarContainer = ({
   avatar,
   userName,
   userId,
-}: {
-  avatar: string;
-  userName: string;
-  userId: number;
-}) => {
+}: StoryAvatarContainerProps) => {
   const { dispatch } = useStoriesContext();
-  const { setCurrentContentStory } = useStoriesModalContext();
+
   const handleClick = () => {
     toggleStoryModal(dispatch, { userId, userName, avatar });
-    setCurrentContentStory({ userId, userName, avatar });
+
+    // setCurrentStories({ userId, userName, avatar });
   };
   return (
     <div className="cursor-pointer" onClick={handleClick}>

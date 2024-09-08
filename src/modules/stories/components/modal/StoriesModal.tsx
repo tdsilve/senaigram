@@ -6,8 +6,13 @@ import { toggleStoryModal } from "../../helpers/toggleStoryModal";
 import { StoriesModalHeader } from "./StoriesModalHeader";
 
 import { Carrossel } from "../carrossel/Carrossel";
+import { Users } from "../../dummyData/data";
 
-export const StoriesModal = () => {
+type StoriesModalProps = {
+  data: Users[];
+};
+
+export const StoriesModal = ({ data }: StoriesModalProps) => {
   const { dispatch, modal } = useStoriesContext();
   const handleModal = () => {
     toggleStoryModal(dispatch, modal);
@@ -19,8 +24,7 @@ export const StoriesModal = () => {
         <div className="w-full">
           <StoriesModalHeader onClick={handleModal} />
         </div>
-
-        <Carrossel />
+        <Carrossel items={data} />
       </div>
     </Dialog>
   );

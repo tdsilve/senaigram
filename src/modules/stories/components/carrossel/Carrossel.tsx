@@ -1,79 +1,119 @@
-"use client";
+import { USERS, Users } from "../../dummyData/data";
+import { StoriesArrowButton } from "../StoriesArrowButton";
 import React from "react";
-import { useStoriesModalContext } from "../../context/StoriesModalContext";
+import { Swiper, SwiperSlide, SwiperClass } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import { useStoriesContext } from "../../context/StoriesContext";
-import { StoryAvatar } from "../StoryAvatar";
-import { RiPlayFill } from "react-icons/ri";
-import { toggleStoryModal } from "../../helpers/toggleStoryModal";
-import { SwiperSlide } from "swiper/react";
+import {
+  getCurrentUserIndex,
+  isIndexFound,
+} from "../../helpers/stories-carrossel";
 
-import { USERS } from "../../dummyData/data";
+type CarrosselProps = {
+  items: Users[];
+};
 
-import { CarrosselContainer } from "./CarrosselContainer";
-import { findAndGetCurrentUserIndex } from "../../helpers/story-modal-swiper";
+export const Carrossel = ({ items }: CarrosselProps) => {
+  const [swiperRef, setSwiperRef] = React.useState<SwiperClass>();
 
-export const Carrossel = () => {
-  const { dispatch, modal } = useStoriesContext();
-  const [currentUserIndex, setCurrentUserIndex] = React.useState(0);
+  const { modal, dispatch } = useStoriesContext();
+  const [indexUser, setIndexUser] = React.useState(0);
+  const [indexStory, setIndexStory] = React.useState(0);
 
-  const { stories, startStoriesModalTransition, setStories } =
-    useStoriesModalContext();
+  React.useEffect(() => {
+    const indexUser = getCurrentUserIndex(modal.userId, items);
+    if (!isIndexFound(indexUser)) return;
+    swiperRef?.slideTo(indexUser, 0);
+    setIndexUser(indexUser);
+  }, [swiperRef]);
 
-  const handleModal = () => {
-    toggleStoryModal(dispatch, modal);
-  };
+  React.useEffect(() => {
+    setIndexStory(0);
+  }, [swiperRef?.realIndex]);
 
-  const handleOnLoad = () => {
-    const { currentUserIndex } = findAndGetCurrentUserIndex(
-      stories,
-      modal.userId,
-    );
-    setCurrentUserIndex(currentUserIndex);
-    // setTimeout(() => {
-    //   startStoriesModalTransition({ modal, dispatch });
-    // }, 1000);
+  const handleChangeSlide = (isPrev: boolean = false) => {
+    if (isPrev) {
+      const hasRemainStories = indexStory > 0;
+      if (hasRemainStories) {
+        setIndexStory(indexStory - 1);
+      } else {
+        swiperRef?.slidePrev();
+        setIndexStory(0);
+      }
+    } else {
+      const hasRemainStories =
+        indexStory < USERS[swiperRef?.realIndex!].stories.length - 1;
+      if (hasRemainStories) {
+        setIndexStory(indexStory + 1);
+      } else {
+        swiperRef?.slideNext();
+        setIndexStory(0);
+      }
+    }
   };
 
   return (
-    <CarrosselContainer>
-      {USERS?.map((item, index) => (
-        <SwiperSlide key={item.id}>
-          <div className="w-full mx-auto h-full rounded-xl  overflow-hidden p-4">
-            <div className=" w-full mx-auto">
-              <div className="flex items-center justify-between p-4 w-full">
-                <StoryAvatar
-                  userName={`${item.name} + ${item.id}`}
-                  avatar={item.avatar}
-                  className="text-white grid-flow-col gap-3"
-                  userNameWidth="w-40"
+    <div className="relative">
+      <Swiper
+        effect={"coverflow"}
+        centeredSlides={true}
+        slidesPerView={2}
+        spaceBetween={0}
+        simulateTouch={false}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 500,
+          modifier: 1.5,
+          slideShadows: false,
+        }}
+        keyboard={false}
+        navigation={false /* arrows are custom */}
+        onSwiper={(swiper) => {
+          setSwiperRef(swiper);
+        }}
+        modules={[EffectCoverflow, Navigation]}
+      >
+        <StoriesArrowButton
+          onClick={() => {
+            handleChangeSlide(true);
+          }}
+          isLeft
+          className="!left-0"
+        />
+        {items?.map((item, index) => (
+          <SwiperSlide key={item.id}>
+            <div className="w-[500px] h-full mx-auto rounded-xl overflow-hidden border  bg-black relative">
+              {swiperRef?.realIndex !== index ? (
+                <img
+                  alt=""
+                  src={item?.stories[0]?.content ?? ""}
+                  className=" object-cover"
+                  draggable={false}
                 />
-                <button className="text-white text-2xl">
-                  <RiPlayFill />
-                </button>
-              </div>
-              <div className="h-full w-full">
-                {currentUserIndex !== index ? (
-                  <img
-                    alt=""
-                    src={item.stories[0]?.content ?? ""}
-                    onLoad={handleOnLoad}
-                    className="max-w-full h-full"
-                    draggable={false}
-                  />
-                ) : (
-                  <img
-                    alt=""
-                    src={stories.currentStory?.content ?? ""}
-                    onLoad={handleOnLoad}
-                    className="max-w-full h-full"
-                    draggable={false}
-                  />
-                )}
-              </div>
+              ) : (
+                <img
+                  alt=""
+                  src={item?.stories[indexStory]?.content ?? ""}
+                  className=" object-cover"
+                  draggable={false}
+                />
+              )}
             </div>
-          </div>
-        </SwiperSlide>
-      ))}
-    </CarrosselContainer>
+          </SwiperSlide>
+        ))}
+        <StoriesArrowButton
+          onClick={() => {
+            handleChangeSlide();
+          }}
+        />
+      </Swiper>
+    </div>
   );
 };

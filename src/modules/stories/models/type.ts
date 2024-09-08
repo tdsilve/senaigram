@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Users } from "../dummyData/data";
 
 export type StoryContent = string;
 export type Story = {
@@ -22,23 +21,4 @@ export type StoriesActionPayload = {
 export type StoriesAction = {
   type: string;
   payload: StoriesActionPayload;
-};
-
-export type StoriesModal = {
-  stories: Story[];
-  currentStory: Story;
-  users: Users[];
-};
-
-export type StoriesModalItems = {
-  currentStories: Story[];
-  currentStory: Story;
-  users: Users[];
-};
-
-export type StoriesModalContextType = {
-  stories: StoriesModalItems;
-  setStories: (val: (draft: StoriesModalItems) => void) => void;
-  setCurrentContentStory: (val: StoriesActionPayload) => void;
-  startStoriesModalTransition: (val: StoriesContextState) => void;
 };
