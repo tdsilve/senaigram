@@ -15,7 +15,10 @@ export const StoriesAvatarScroller = ({ data }: { data: Users[] }) => {
 
   return (
     <div className="relative w-full">
-      <div className="flex gap-2 overflow-x-auto py-2 px-4" ref={containerRef}>
+      <div
+        className="flex gap-2 overflow-x-auto py-2 px-4 md:px-2"
+        ref={containerRef}
+      >
         {data?.map((item) => (
           <StoryAvatarContainer
             key={item.id}

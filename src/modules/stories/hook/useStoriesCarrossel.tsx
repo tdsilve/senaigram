@@ -1,5 +1,5 @@
 import React from "react";
-import { Swiper, SwiperSlide, SwiperClass } from "swiper/react";
+import { SwiperClass } from "swiper/react";
 import { TrackItem } from "../models/type";
 import { Users } from "../dummyData/data";
 import { useImmer } from "use-immer";
