@@ -26,8 +26,6 @@ export const StoriesModal = ({ data }: StoriesModalProps) => {
         </div>
 
         <Carrossel items={data} />
-
-
       </div>
     </Dialog>
   );

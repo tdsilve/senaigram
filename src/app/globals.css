@@ -40,14 +40,6 @@
   @apply !opacity-70;
 }
 
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 300px;
-  height: 300px;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
+.swiper {
+  @apply w-full h-full;
 }

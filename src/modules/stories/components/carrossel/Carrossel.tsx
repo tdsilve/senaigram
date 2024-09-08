@@ -8,9 +8,10 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { EffectCoverflow, Navigation } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import { useStoriesContext } from "../../context/StoriesContext";
 import { useStoriesCarrossel } from "../../hook/useStoriesCarrossel";
+import { cx } from "@/lib/css";
 
 type CarrosselProps = {
   items: Users[];
@@ -18,33 +19,27 @@ type CarrosselProps = {
 
 export const Carrossel = ({ items }: CarrosselProps) => {
   const { modal, dispatch } = useStoriesContext();
-  const { handleChangeSlide, track, setSwiperRef } = useStoriesCarrossel(
-    items,
-    dispatch,
-    modal,
-  );
+  const { handleChangeSlide, track, setSwiperRef, currentIndexUser } =
+    useStoriesCarrossel(items, dispatch, modal);
 
   return (
     <div className="relative mx-auto">
       <Swiper
-        effect={"coverflow"}
         centeredSlides={true}
-        slidesPerView={3}
-        spaceBetween={10}
-        simulateTouch={false}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 500,
-          modifier: 1.5,
-          slideShadows: false,
+        breakpoints={{
+          630: { slidesPerView: 2 },
+          1200: { slidesPerView: 3 },
         }}
+        spaceBetween={30}
+        simulateTouch={false}
         keyboard={false}
-        navigation={false }
+        navigation={false}
         onSwiper={(swiper) => {
           setSwiperRef(swiper);
         }}
-        modules={[EffectCoverflow, Navigation]}
+        modules={[Navigation]}
+        className="w-full h-full"
+        observer={true}
       >
         <StoriesArrowButton
           onClick={() => {
@@ -53,13 +48,20 @@ export const Carrossel = ({ items }: CarrosselProps) => {
           isLeft
           className="!left-3"
         />
-        {track?.map((item) => (
-          <SwiperSlide key={item.id}>
-            <div className="w-[370px] h-[90vh] max-h-[600px] rounded-xl overflow-hidden border  bg-black">
+        {track?.map((item, index) => (
+          <SwiperSlide key={item.id} className=" w-[60%]">
+            <div
+              className={cx(
+                "rounded-xl overflow-hidden border transition-all translate-y-14  bg-black",
+                currentIndexUser === index
+                  ? "h-[600px] scaley-105 translate-y-0"
+                  : "h-[500px]",
+              )}
+            >
               <img
                 alt=""
                 src={item?.stories[item.storyIndex]?.content ?? ""}
-                className="max-w-full object-cover"
+                className="block w-full h-full object-cover"
                 draggable={false}
               />
             </div>
@@ -71,7 +73,7 @@ export const Carrossel = ({ items }: CarrosselProps) => {
           }}
           className="!right-3"
         />
-      </Swiper> 
+      </Swiper>
     </div>
   );
 };

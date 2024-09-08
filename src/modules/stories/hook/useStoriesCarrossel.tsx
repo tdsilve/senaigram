@@ -29,6 +29,7 @@ export const useStoriesCarrossel = (
   );
 
   const [track, setTrack] = useImmer<TrackItem[]>(getInitialTrack);
+  const [currentIndexUser, setCurrentIndexUser] = React.useState(0);
 
   React.useEffect(() => {
     const indexUser = getCurrentUserIndex(modal.userId, items);
@@ -37,6 +38,7 @@ export const useStoriesCarrossel = (
       return;
     }
     swiperRef?.slideTo(indexUser, 0);
+    setCurrentIndexUser(indexUser);
   }, [swiperRef, dispatch, items, modal]);
 
   const handleChangeSlide = (isPrev: boolean = false) => {
@@ -65,6 +67,7 @@ export const useStoriesCarrossel = (
         });
       } else {
         swiperRef?.slidePrev();
+        setCurrentIndexUser(swiperRef?.realIndex!);
       }
     } else {
       if (noRemainData) {
@@ -78,6 +81,7 @@ export const useStoriesCarrossel = (
         });
       } else {
         swiperRef?.slideNext();
+        setCurrentIndexUser(swiperRef?.realIndex!);
       }
     }
   };
@@ -86,5 +90,6 @@ export const useStoriesCarrossel = (
     handleChangeSlide,
     track,
     setSwiperRef,
+    currentIndexUser,
   };
 };
