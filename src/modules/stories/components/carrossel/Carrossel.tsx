@@ -18,8 +18,11 @@ type CarrosselProps = {
 
 export const Carrossel = ({ items }: CarrosselProps) => {
   const { modal, dispatch } = useStoriesContext();
-  const { handleChangeSlide,
-    track, setSwiperRef } = useStoriesCarrossel(items, dispatch, modal);
+  const { handleChangeSlide, track, setSwiperRef } = useStoriesCarrossel(
+    items,
+    dispatch,
+    modal,
+  );
 
   return (
     <div className="relative">
