@@ -1,4 +1,4 @@
-import { USERS, Users } from "../../dummyData/data";
+import { Users } from "../../dummyData/data";
 import { StoriesArrowButton } from "../StoriesArrowButton";
 import React from "react";
 import { Swiper, SwiperSlide, SwiperClass } from "swiper/react";
@@ -8,52 +8,91 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import { EffectCoverflow, Navigation } from "swiper/modules";
 import { useStoriesContext } from "../../context/StoriesContext";
 import {
   getCurrentUserIndex,
   isIndexFound,
 } from "../../helpers/stories-carrossel";
+import { useImmer } from "use-immer";
+import { toggleStoryModal } from "../../helpers/toggleStoryModal";
 
 type CarrosselProps = {
   items: Users[];
 };
 
+type TrackItem = {
+  id: number;
+  authorId: number;
+  stories: any[];
+  storyIndex: number;
+  index: number;
+};
+
 export const Carrossel = ({ items }: CarrosselProps) => {
   const [swiperRef, setSwiperRef] = React.useState<SwiperClass>();
-
+  const getInitialTrack = React.useMemo(
+    () =>
+      items.map(({ id, stories, authorId }, index) => ({
+        id,
+        authorId,
+        stories,
+        storyIndex: 0,
+        index,
+      })),
+    [items],
+  );
+  const [track, setTrack] = useImmer<TrackItem[]>(getInitialTrack);
   const { modal, dispatch } = useStoriesContext();
-  const [indexUser, setIndexUser] = React.useState(0);
-  const [indexStory, setIndexStory] = React.useState(0);
 
   React.useEffect(() => {
     const indexUser = getCurrentUserIndex(modal.userId, items);
-    if (!isIndexFound(indexUser)) return;
+    if (!isIndexFound(indexUser)) {
+      toggleStoryModal(dispatch, modal);
+      return;
+    }
     swiperRef?.slideTo(indexUser, 0);
-    setIndexUser(indexUser);
-  }, [swiperRef]);
-
-  React.useEffect(() => {
-    setIndexStory(0);
-  }, [swiperRef?.realIndex]);
+  }, [swiperRef, dispatch, items, modal]);
 
   const handleChangeSlide = (isPrev: boolean = false) => {
+    const currentIndex = swiperRef?.realIndex!;
+    const currentTrackItem = track[currentIndex];
+    const noRemainData = isPrev
+      ? currentTrackItem.storyIndex === 0 && currentIndex === 0
+      : track[swiperRef?.realIndex!].storyIndex ===
+          track[swiperRef?.realIndex!].stories.length - 1 &&
+        swiperRef?.realIndex! === track.length - 1;
+    const hasRemainStories = isPrev
+      ? currentTrackItem.storyIndex > 0
+      : track[swiperRef?.realIndex!].storyIndex <
+        track[swiperRef?.realIndex!].stories.length - 1;
+
     if (isPrev) {
-      const hasRemainStories = indexStory > 0;
+      if (noRemainData) {
+        toggleStoryModal(dispatch, modal);
+        return;
+      }
+
       if (hasRemainStories) {
-        setIndexStory(indexStory - 1);
+        setTrack((state) => {
+          state[swiperRef?.realIndex!].storyIndex =
+            state[swiperRef?.realIndex!].storyIndex - 1;
+        });
       } else {
         swiperRef?.slidePrev();
-        setIndexStory(0);
       }
     } else {
-      const hasRemainStories =
-        indexStory < USERS[swiperRef?.realIndex!].stories.length - 1;
+      if (noRemainData) {
+        toggleStoryModal(dispatch, modal);
+        return;
+      }
       if (hasRemainStories) {
-        setIndexStory(indexStory + 1);
+        setTrack((state) => {
+          state[swiperRef?.realIndex!].storyIndex =
+            state[swiperRef?.realIndex!].storyIndex + 1;
+        });
       } else {
         swiperRef?.slideNext();
-        setIndexStory(0);
       }
     }
   };
@@ -85,26 +124,17 @@ export const Carrossel = ({ items }: CarrosselProps) => {
             handleChangeSlide(true);
           }}
           isLeft
-          className="!left-0"
+          className="!left-1/3"
         />
-        {items?.map((item, index) => (
+        {track?.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="w-[500px] h-full mx-auto rounded-xl overflow-hidden border  bg-black relative">
-              {swiperRef?.realIndex !== index ? (
-                <img
-                  alt=""
-                  src={item?.stories[0]?.content ?? ""}
-                  className=" object-cover"
-                  draggable={false}
-                />
-              ) : (
-                <img
-                  alt=""
-                  src={item?.stories[indexStory]?.content ?? ""}
-                  className=" object-cover"
-                  draggable={false}
-                />
-              )}
+            <div className="w-[500px] h-[500px] mx-auto rounded-xl overflow-hidden border  bg-black relative">
+              <img
+                alt=""
+                src={item?.stories[item.storyIndex]?.content ?? ""}
+                className="max-w-full !object-cover"
+                draggable={false}
+              />
             </div>
           </SwiperSlide>
         ))}
@@ -112,6 +142,7 @@ export const Carrossel = ({ items }: CarrosselProps) => {
           onClick={() => {
             handleChangeSlide();
           }}
+          className="!right-1/3"
         />
       </Swiper>
     </div>
