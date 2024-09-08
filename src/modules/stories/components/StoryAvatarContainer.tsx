@@ -18,8 +18,6 @@ export const StoryAvatarContainer = ({
 
   const handleClick = () => {
     toggleStoryModal(dispatch, { userId, userName, avatar });
-
-    // setCurrentStories({ userId, userName, avatar });
   };
   return (
     <div className="cursor-pointer" onClick={handleClick}>

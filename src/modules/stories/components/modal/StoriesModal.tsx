@@ -20,11 +20,14 @@ export const StoriesModal = ({ data }: StoriesModalProps) => {
 
   return (
     <Dialog open={modal.status} fullScreen>
-      <div className="w-screen min-h-screen overflow-hidden bg-black/90 p-4">
-        <div className="w-full">
+      <div className="h-full w-full bg-black/90 p-4 overflow-hidden">
+        <div className="mb-28 ">
           <StoriesModalHeader onClick={handleModal} />
         </div>
+
         <Carrossel items={data} />
+
+
       </div>
     </Dialog>
   );
