@@ -8,7 +8,7 @@ export default function Layout({
   return (
     <div className="lg:flex block">
       <Header />
-      <div className="mx-auto w-[700px]">{children}</div>
+      <div className="mx-auto max-w-[700px] w-full">{children}</div>
     </div>
   );
 }
