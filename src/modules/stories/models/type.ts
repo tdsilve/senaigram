@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 export type StoryContent = string;
 export type Story = {
   id: number;

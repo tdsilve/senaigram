@@ -1,6 +1,6 @@
 "use client";
 
-import { routes } from "@/constants/routes";
+import { routes } from "@/model/routes";
 import { HeaderSmallScreen } from "./HeaderSmallScreen";
 import { HeaderLargeScreen } from "./HeaderLargeScreen";
 
