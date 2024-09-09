@@ -8,7 +8,7 @@ import { HeaderItem } from "./HeaderItem";
 export const HeaderLargeScreen = ({ routes }: HeaderProps) => {
   const { isActive } = useIsPathnameActive();
   return (
-    <div className="h-full flex flex-col gap-4 items-center header-shadow w-[60px] pt-4 border">
+    <div className="min-h-screen flex flex-col gap-4 items-center header-shadow w-[60px] pt-4 border">
       <Home />
       {routes?.map(({ icon, label, route, activeIcon, id }) => {
         const content = route && isActive(route) ? activeIcon : icon;
