@@ -6,7 +6,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": "off",
     "no-undef": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "warn"
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

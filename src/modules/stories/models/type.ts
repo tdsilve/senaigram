@@ -29,4 +29,6 @@ export type TrackItem = {
   stories: any[];
   storyIndex: number;
   index: number;
+  name: string;
+  avatar?: string;
 };

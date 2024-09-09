@@ -3,7 +3,7 @@ import { SwiperClass } from "swiper/react";
 import { TrackItem } from "../models/type";
 import { Users } from "../dummyData/data";
 import { useImmer } from "use-immer";
-import { useWindowSize, useScreen } from "usehooks-ts";
+import { useWindowSize } from "usehooks-ts";
 import { StoriesAction, StoriesActionPayload } from "../models/type";
 import {
   getCurrentUserIndex,
@@ -19,7 +19,7 @@ export const useStoriesCarrossel = (
   const [isMobileView, setIsMobileView] = React.useState(false);
   const [swiperRef, setSwiperRef] = React.useState<SwiperClass>();
   const { width = 0 } = useWindowSize();
-  // const {width} = useScreen()
+
   const getInitialTrack = React.useMemo(
     () =>
       items.map(({ id, stories, authorId, avatar, name }, index) => ({
