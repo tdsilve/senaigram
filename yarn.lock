@@ -109,6 +109,17 @@
     snakecase-keys "5.4.4"
     tslib "2.4.1"
 
+"@clerk/backend@^1.9.2":
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/@clerk/backend/-/backend-1.9.2.tgz#bb9ba1cb516921add8c38df981476b6f281e4546"
+  integrity sha512-8vCYux8Xbu5TQ2iq9tYuDnNhv3K/XhZ+34QJG+n4ZX4w4FfTTuzwb5OylcmP69vPvYybhoQfjpK57kBOW22deg==
+  dependencies:
+    "@clerk/shared" "2.6.2"
+    "@clerk/types" "4.19.0"
+    cookie "0.5.0"
+    snakecase-keys "5.4.4"
+    tslib "2.4.1"
+
 "@clerk/clerk-react@5.8.0-snapshot.vf3edf18":
   version "5.8.0-snapshot.vf3edf18"
   resolved "https://registry.yarnpkg.com/@clerk/clerk-react/-/clerk-react-5.8.0-snapshot.vf3edf18.tgz#092fa5cbcb2ee555230cccd373d9c1fa633ceb81"
@@ -132,6 +143,17 @@
     server-only "0.0.1"
     tslib "2.4.1"
 
+"@clerk/shared@2.6.2":
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/@clerk/shared/-/shared-2.6.2.tgz#db574bf1aa877faa11175700736fc715383b1fd6"
+  integrity sha512-RkrNknIr98GPu3srXLhjJViC1Mom1gUsRMNnf1deibX2yvRnndloZGnFb0qxf+pFL/NCkKd3nSHtK3eCJQrVYQ==
+  dependencies:
+    "@clerk/types" "4.19.0"
+    glob-to-regexp "0.4.1"
+    js-cookie "3.0.5"
+    std-env "^3.7.0"
+    swr "^2.2.0"
+
 "@clerk/shared@2.7.0-snapshot.vf3edf18":
   version "2.7.0-snapshot.vf3edf18"
   resolved "https://registry.yarnpkg.com/@clerk/shared/-/shared-2.7.0-snapshot.vf3edf18.tgz#c1a4b689ba070d65d83d0d22b7744b16c81b2751"
@@ -142,6 +164,13 @@
     js-cookie "3.0.5"
     std-env "^3.7.0"
     swr "^2.2.0"
+
+"@clerk/types@4.19.0":
+  version "4.19.0"
+  resolved "https://registry.yarnpkg.com/@clerk/types/-/types-4.19.0.tgz#945370cfb80afae5ceef31c7110ef4ab32726f5f"
+  integrity sha512-bDN/nRUD5PFCehQ+Kjdcft0I3b9CIyCcY3OBNDSc1L6RQhlXH+J48EtaP/cbRdslb83LJiBPQ2i/gV4VgblzwA==
+  dependencies:
+    csstype "3.1.1"
 
 "@clerk/types@4.20.0-snapshot.vf3edf18":
   version "4.20.0-snapshot.vf3edf18"
@@ -288,6 +317,16 @@
   version "8.57.0"
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.57.0.tgz#a5417ae8427873f1dd08b70b3574b453e67b5f7f"
   integrity sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==
+
+"@hono/clerk-auth@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@hono/clerk-auth/-/clerk-auth-2.0.0.tgz#afeefb8110b6b44b09c631b00bb9594b49873eb0"
+  integrity sha512-ad+U8jDlBPgXBTv8BRnPrSFC/uX8U0ojiCR77I3WWHm5I9L3/bHsZpQ2lgvLTV3YbJyVmAdKJArEAQiPjodGdA==
+
+"@hono/zod-validator@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@hono/zod-validator/-/zod-validator-0.2.2.tgz#929a1c40aee5eac1ed9c84094d6d977e0b70187a"
+  integrity sha512-dSDxaPV70Py8wuIU2QNpoVEIOSzSXZ/6/B/h4xA7eOMz7+AarKTSGV8E6QwrdcCbBLkpqfJ4Q2TmBO0eP1tCBQ==
 
 "@humanwhocodes/config-array@^0.11.14":
   version "0.11.14"
@@ -2067,6 +2106,11 @@ hoist-non-react-statics@^3.3.1:
   dependencies:
     react-is "^16.7.0"
 
+hono@^4.5.11:
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/hono/-/hono-4.5.11.tgz#452743c4b372078001506e3ce315e878f030e369"
+  integrity sha512-62FcjLPtjAFwISVBUshryl+vbHOjg8rE4uIK/dxyR8GpLztunZpwFmfEvmJCUI7xoGh/Sr3CGCDPCmYxVw7wUQ==
+
 human-signals@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-5.0.0.tgz#42665a284f9ae0dade3ba41ebc37eb4b852f3a28"
@@ -3843,3 +3887,8 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zod@^3.23.8:
+  version "3.23.8"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.23.8.tgz#e37b957b5d52079769fb8097099b592f0ef4067d"
+  integrity sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==

@@ -17,11 +17,15 @@
     ]
   },
   "dependencies": {
+    "@clerk/backend": "^1.9.2",
     "@clerk/nextjs": "5.5.0-snapshot.vf3edf18 ",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
+    "@hono/clerk-auth": "^2.0.0",
+    "@hono/zod-validator": "^0.2.2",
     "@mui/material": "^5.16.6",
     "framer-motion": "^11.5.4",
+    "hono": "^4.5.11",
     "husky": "^9.1.5",
     "immer": "^10.1.1",
     "next": "14.2.8",
@@ -31,7 +35,8 @@
     "swiper": "^11.1.12",
     "tailwind-merge": "^2.5.2",
     "use-immer": "^0.10.0",
-    "usehooks-ts": "^3.1.0"
+    "usehooks-ts": "^3.1.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@total-typescript/ts-reset": "^0.6.1",
