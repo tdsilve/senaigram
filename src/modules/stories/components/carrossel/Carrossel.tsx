@@ -41,7 +41,7 @@ export const Carrossel = ({ items }: CarrosselProps) => {
             className={cx(
               " overflow-hidden transition-all bg-black h-[500px] w-full relative",
               !isMobileView && currentIndexUser === index
-                ? " h-[600px] top-1/2 -translate-y-1/2 "
+                ? " h-[590px] top-1/2 -translate-y-1/2 "
                 : " h-[490px] top-1/2 -translate-y-1/2",
               !isMobileView ? "rounded-xl" : "",
             )}

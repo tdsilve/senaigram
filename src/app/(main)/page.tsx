@@ -3,11 +3,13 @@
 import { Stories } from "@/modules/stories/components/Stories";
 
 import React from "react";
+import toast from "react-hot-toast";
 
 export default function Home() {
   return (
     <div className="w-full">
       <Stories />
+      <button onClick={() => toast.success("hellow")}>toast</button>
       heyhhhhhhh Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab
       quae quidem eius. Perspiciatis rerum voluptatem cumque ipsum, quia
       dignissimos. Velit est cumque temporibus itaque aliquam obcaecati adipisci
