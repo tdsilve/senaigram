@@ -11,7 +11,7 @@ type CarrosselHeaderPaginationProps = {
 export const CarrosselStoriesHeaderPagination = ({
   quantity,
   currentIndex,
-  isCurrentUser
+  isCurrentUser,
 }: CarrosselHeaderPaginationProps) => {
   const variants = {
     open: { x: 0 },

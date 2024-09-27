@@ -15,7 +15,7 @@ export const CarrosselStoryHeader = ({
   userName,
   storiesLength,
   currentStoryIndex,
-  isCurrentUser
+  isCurrentUser,
 }: CarrosselStoryHeaderProps) => {
   return (
     <div className="text-white absolute z-30 p-4 w-full">
