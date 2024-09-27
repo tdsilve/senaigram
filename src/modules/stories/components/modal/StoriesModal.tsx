@@ -21,7 +21,7 @@ export const StoriesModal = ({ data }: StoriesModalProps) => {
   return (
     <Dialog open={modal.status} fullScreen>
       <div className="h-full w-full bg-black/90 p-4 overflow-hidden">
-        <div className="mb-2 ">
+        <div className="mb-2">
           <StoriesModalHeader onClick={handleModal} />
         </div>
 

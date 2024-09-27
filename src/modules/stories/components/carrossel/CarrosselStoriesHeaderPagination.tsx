@@ -5,11 +5,13 @@ import { motion } from "framer-motion";
 type CarrosselHeaderPaginationProps = {
   quantity: number;
   currentIndex: number;
+  isCurrentUser: boolean;
 };
 
 export const CarrosselStoriesHeaderPagination = ({
   quantity,
   currentIndex,
+  isCurrentUser
 }: CarrosselHeaderPaginationProps) => {
   const variants = {
     open: { x: 0 },
@@ -21,7 +23,7 @@ export const CarrosselStoriesHeaderPagination = ({
       {Array(quantity)
         .fill(0)
         .map((_, index) => {
-          const isCurrent = currentIndex === index;
+          const isCurrent = isCurrentUser && currentIndex === index;
 
           return (
             <div
@@ -32,9 +34,9 @@ export const CarrosselStoriesHeaderPagination = ({
                 animate={isCurrent ? "open" : "closed"}
                 initial={false}
                 variants={variants}
-                transition={{ duration: 0.5, ease: "easeOut" }}
+                transition={{ duration: 0.5, ease: "easeIn" }}
                 className={cx(
-                  isCurrent ? "bg-white" : "bg-white/30",
+                  isCurrent ? "bg-white" : "bg-white/30 hidden",
                   "h-full rounded-full",
                 )}
               />

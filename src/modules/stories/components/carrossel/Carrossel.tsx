@@ -51,6 +51,7 @@ export const Carrossel = ({ items }: CarrosselProps) => {
               userName={item.name}
               storiesLength={item.stories.length}
               currentStoryIndex={item.storyIndex}
+              isCurrentUser = {currentIndexUser === index}
             />
             <Image
               alt=""

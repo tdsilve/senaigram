@@ -7,6 +7,7 @@ type CarrosselStoryHeaderProps = {
   userName: string;
   storiesLength: number;
   currentStoryIndex: number;
+  isCurrentUser: boolean;
 };
 
 export const CarrosselStoryHeader = ({
@@ -14,12 +15,14 @@ export const CarrosselStoryHeader = ({
   userName,
   storiesLength,
   currentStoryIndex,
+  isCurrentUser
 }: CarrosselStoryHeaderProps) => {
   return (
     <div className="text-white absolute z-30 p-4 w-full">
       <CarrosselStoriesHeaderPagination
         quantity={storiesLength}
         currentIndex={currentStoryIndex}
+        isCurrentUser={isCurrentUser}
       />
       <StoryAvatar
         avatar={avatar}
